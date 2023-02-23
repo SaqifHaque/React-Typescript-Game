@@ -3,10 +3,11 @@ import HangmanDrawing from "./components/HangmanDrawing";
 import HangmanWord from "./components/HangmanWord";
 import Keyboard from "./components/keyboard/Keyboard";
 import words from './wordList.json';
+import { Fireworks } from '@fireworks-js/react'
 
 function App() {
   const randomWord = words[Math.floor(Math.random() * words.length)]
-  const [wordToGuess, setWorldToGuess] = useState(randomWord);
+  const [wordToGuess, setWorldToGuess] = useState("test");
   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
 
   const incorrectLetters = guessedLetters.filter(letter => !wordToGuess.includes(letter))
@@ -38,6 +39,25 @@ function App() {
   }, [guessedLetters])
 
  return (
+  <>
+   {isWinner && 
+    <Fireworks
+        options={{
+          rocketsPoint: {
+            min: 0,
+            max: 100
+          }
+        }}
+        style={{
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          position: 'fixed',
+          background: '#000'
+        }}
+      />
+    }
   <div style={{
     maxWidth: "800px",
     display: "flex",
@@ -59,8 +79,8 @@ function App() {
         inactiveLetters={incorrectLetters}
         addGuessedLetter={addGuessedLetter}/>
     </div>
-  
   </div>
+  </>
  )
 }
 
