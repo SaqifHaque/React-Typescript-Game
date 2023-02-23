@@ -1,7 +1,7 @@
 import { useState } from "react"
 import HangmanDrawing from "./components/HangmanDrawing";
 import HangmanWord from "./components/HangmanWord";
-import Keyboard from "./components/Keyboard";
+import Keyboard from "./components/keyboard/Keyboard";
 import words from './wordList.json';
 
 function App() {
@@ -23,7 +23,10 @@ function App() {
     </div>
     <HangmanDrawing/>
     <HangmanWord/>
-    <Keyboard/>
+    <div style={{ alignSelf: "stretch" }}>
+      <Keyboard/>
+    </div>
+  
   </div>
  )
 }
